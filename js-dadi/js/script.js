@@ -7,18 +7,45 @@ Stabilire il vincitore, in base a chi fa il punteggio più alto. */
 // Stabilite chi è il vincitore
 
 /* _________________________ */
+const btnStart = document.getElementById("btn");
+const btnReset = document.getElementById("btn-reset");
+console.log(btnStart, btnReset);
+const resultComputer = document.getElementById("computer");
+console.log(resultComputer);
+const resultUtente = document.getElementById("utente");
+const finalResult = document.getElementById("result");
+
+
+/* BTN Start event */
+btnStart.addEventListener("click", function(){
+    
+
 const computerNumber = (Math.floor(Math.random() * 6)) + 1;
 console.log(computerNumber);
 
 const userNumber = (Math.floor(Math.random()*6))+1;
 console.log(userNumber);
 
+let outPut = "";
 if (userNumber > computerNumber) {
-    alert("Punteggio utente " + userNumber + " Punteggio Pc " + computerNumber + " Utente vince!");
+    outPut = ("Utente vince!");
 }else if (userNumber === computerNumber) {
-    alert("Punteggio utente " + userNumber + " Punteggio Pc " + computerNumber + " Pareggio!");
+    outPut = ("Pareggio!");
 }
 
 else {
-    alert("Punteggio utente " + userNumber + " Punteggio Pc " + computerNumber + " Pc vince!");
-}
+    outPut = ("PC vince!");
+};
+
+resultComputer.innerHTML = computerNumber;
+resultUtente.innerHTML = userNumber;
+finalResult.innerHTML = outPut;
+
+});
+
+/* Btn reset event */
+btnReset.addEventListener("click", function(){
+    resultComputer.innerHTML = "";
+    resultUtente.innerHTML = "";
+    finalResult.innerHTML= "";
+})
